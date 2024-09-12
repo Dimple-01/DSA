@@ -1,14 +1,14 @@
 class Solution {
 public:
     int minBitFlips(int start, int goal) {
-        int cnt=0;
         int num= start ^ goal;
-        while( num > 1)
+        // now this num should be zero to make start = goal, so check each bit by shifting with 1   bit and applying &.
+        int cnt=0;
+        while( num != 0)
         {
-            cnt += (num & 1);   //give 1 for odd and 0 for even
-            num= num >> 1;      // num= num/2;
+            if(( num & 1) != 0) cnt++;
+            num = num >> 1;
         }
-        if(num == 1) cnt +=1;
         return cnt;
         
     }
